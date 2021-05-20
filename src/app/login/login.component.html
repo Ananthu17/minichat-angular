@@ -1,0 +1,67 @@
+<div class="landing-wrapper">
+    <div class="logo">
+        <div class="container d-flex" style="align-items: center;">
+            <img src="assets/images/logochat.png" alt="" width="7%"><span class="logo-text">MINI CHAT</span>
+        </div>
+    </div>
+</div>
+<div class="background">
+    <div id="card" style="z-index: 2;">
+        <div id="card-content">
+          <div id="card-title">
+            <h2 style="font-weight: 800;">LOGIN</h2>
+            <div class="underline-title"></div>
+          </div>
+          <form #userForm="ngForm" class="form" (ngSubmit)="onSubmit(userForm.value)">
+            <label for="user-email" style="padding-top:13px">
+                &nbsp;Email
+              </label>
+            <input id="user-email" class="form-content" type="email" #username="ngModel" name="username" autocomplete="on" ngModel required />
+            <div class="form-border"></div>
+            <label for="user-password" style="padding-top:22px">&nbsp;Password
+              </label>
+            <input id="user-password" class="form-content" #password ="ngModel" type="password" name="password" ngModel required />
+            <div class="form-border"></div>
+            <a href="#">
+              <legend id="forgot-pass">Forgot password?</legend>
+            </a>
+            <input id="submit-btn" type="submit" name="submit" value="LOGIN"  />
+            <a href="javascript:void(0)" id="signup" (click)=showsignup()>Don't have account yet?</a>
+          </form>
+        </div>
+    </div>
+    <div id="card-signup" style="z-index: 2;"class="d-none">
+        <div id="card-content" >
+            <div id="card-title">
+              <h2 style="font-weight: 800;">SIGNUP</h2>
+              <div class="underline-title-signup"></div>
+            </div>
+            <form method="post" class="form" #signupForm="ngForm" (ngSubmit)="onSignup(signupForm.value)">
+                <label for="user-email" style="padding-top:13px">
+                    &nbsp;Name
+                  </label>
+                <input id="user-email" class="form-content" type="email" #username="ngModel" name="username" autocomplete="on" ngModel required />
+                <div class="form-border"></div>
+              <label for="user-email" style="padding-top:13px">
+                  &nbsp;Email
+                </label>
+              <input id="user-email" class="form-content" type="email" #email="ngModel" name="email" autocomplete="on" ngModel required />
+              <div class="form-border"></div>
+              <label for="user-email" style="padding-top:13px">
+                &nbsp;Mobile
+              </label>
+            <input id="user-email" class="form-content" type="email" #mobile="ngModel"  name="mobile" autocomplete="on" ngModel required />
+            <div class="form-border"></div>
+              <label for="user-password" style="padding-top:22px">&nbsp;Password
+                </label>
+              <input id="user-password" class="form-content" type="password" #password="ngModel" name="password" ngModel required />
+              <div class="form-border"></div>
+              <a href="#">
+                <legend id="forgot-pass">Forgot password?</legend>
+              </a>
+              <input id="submit-btn" type="submit" name="submit" value="SIGNUP" />
+              <a href="javascript:void(0)" id="signup-new" (click)=showlogin()>Login</a>
+            </form>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="landing-wrapper">
+    <div class="logo">
+        <div class="container-fluid d-flex" style="align-items: center;">
+            <!-- <img src="assets/images/logochat.png" alt="" width="3%"><span class="logo-text">MINI CHAT</span> -->
+        </div>
+    </div>
+</div>
+<div class="background">
+    <div class="container">
+        <div class="card shadow" style="z-index: 3;height: 800px;display: flex;flex-direction: row;">
+            <div class="sidebar">
+                <div class="sidebar-title">
+                    <img src="assets/images/users/user-2.jpg" class="img-thumbnail" alt="Cinque Terre" width="18%">
+                    <div>
+                        <i class="fas fa-spinner text-secondary pr-4"></i>
+                        <i class="fas fa-comment-alt text-secondary pr-4"></i>
+                        <i class=" fas fa-ellipsis-v text-secondary pr-4"></i>
+                    </div>
+                </div>
+                <div class="searchbox">
+                    <input type="text" class="form-control" placeholder="Search or start new chat" style="border-radius: 1rem;">
+                </div>
+                <div class="contacts" >
+                    <div class="contact-tab"  *ngFor="let data of contacts">
+                        <div (click)="openChat(data.user,data.id, data.friend)">
+                            <img src="assets/images/users/user-{{data.id}}.jpg" class="img-thumbnail mr-3" alt="Cinque Terre" width="25%" style="border-radius: 2rem;">
+                            <div style="display: flex;flex-direction: column;margin-top: 5px;align-items: baseline;">
+                                <h6 class="pt-2">{{data.friend}}</h6>
+                                
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-secondary">10:45 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- chatbox starts here  -->
+            <div *ngIf="chatStatus == true; then thenBlock else elseBlock"></div>
+            <ng-template #elseBlock><div class="chatbox" style="background-image: url(/assets/images/web.jpg) !important;background-repeat: no-repeat;background-size: cover;"></div></ng-template>
+            <ng-template #thenBlock>
+            <div class="chatbox">
+                <div class="sidebar-title">
+                    <div style="display: flex;align-items: center;">
+                        <img src="assets/images/users/user-7.jpg" class="img-thumbnail mr-2" alt="Cinque Terre" width="20%">
+                        <h5 style="font-family: 'Montserrat', sans-serif;">{{friend}}</h5>
+                    </div>
+                    <div>
+                        <i class=" fas fa-search text-secondary pr-4"></i>
+                        <div class="dropdown">
+                            <a class="dropbtn"><i class=" fas fa-ellipsis-v text-secondary pr-4"></i></a>
+                            <div class="dropdown-content">
+                              <span class="dropdown-welcome mb-3">Welcome!</span>
+                              <div>
+                                <a href="javascript:void(0)"><i class=" fas fa-user text-secondary pr-4"></i>Account</a>
+                              </div>
+                              <div>
+                                <a href="javascript:void(0)" (click)="logout()"><i class="fe-log-out text-secondary pr-4"></i>Logout</a>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="msger" >
+                        <main class="msger-chat" *ngFor="let data of msgList" >
+                         <!-- left  -->
+                          <div class="msg left-msg" *ngIf="data.author == data.friend">
+                            <div
+                             class="msg-img"
+                             style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+                            ></div>
+                      
+                            <div class="msg-bubble">
+                              <div class="msg-text" style="font-weight: bold;">
+                                {{data.content}}
+                              </div>
+                              <div class="msg-info">
+                                <div class="msg-info-time">{{data.timestamp}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- right  -->
+                          <div class="msg right-msg" *ngIf="data.author != data.friend">
+                            <div
+                             class="msg-img"
+                             style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+                            ></div>
+                      
+                            <div class="msg-bubble">
+                              <div class="msg-text" style="font-weight: bold;">
+                                {{data.content}}
+                              </div>
+                              <div class="msg-info">
+                                <div class="msg-info-time">{{data.timestamp}}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </main>
+                </div>
+                <div class="chat-input" style="height: 73px !important;">
+                    <i class="far fa-smile lg text-secondary pl-4 pr-3"></i>
+                    <i class="ti-clip lg text-secondary pr-3"></i>
+                    <input type="text" class="form-control" placeholder="Type a message" style="border-radius: 1rem;" (change)="start($event.target)">
+                    <i class="fas fa-microphone lg text-secondary pl-3 pr-4"></i>
+                </div>
+        </div>
+      </ng-template>
+        </div>
+    </div>
+</div>
