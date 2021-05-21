@@ -62,40 +62,42 @@
                     </div>
                 </div>
                 <div class="msger" >
-                        <main class="msger-chat" *ngFor="let data of msgList" >
-                         <!-- left  -->
-                          <div class="msg left-msg" *ngIf="data.author == data.friend">
-                            <div
-                             class="msg-img"
-                             style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
-                            ></div>
-                      
-                            <div class="msg-bubble">
-                              <div class="msg-text" style="font-weight: bold;">
-                                {{data.content}}
-                              </div>
-                              <div class="msg-info">
-                                <div class="msg-info-time">{{data.timestamp}}</div>
-                              </div>
-                            </div>
+                  <main class="msger-chat">
+                    <div *ngFor="let data of msgList" style="margin: 10px 0 10px 0;">
+                      <!-- left  -->
+                      <div class="msg left-msg" *ngIf="data.author == data.friend">
+                        <div
+                         class="msg-img"
+                         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+                        ></div>
+                  
+                        <div class="msg-bubble">
+                          <div class="msg-text" style="font-weight: bold;">
+                            {{data.content}}
                           </div>
-                          <!-- right  -->
-                          <div class="msg right-msg" *ngIf="data.author != data.friend">
-                            <div
-                             class="msg-img"
-                             style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
-                            ></div>
-                      
-                            <div class="msg-bubble">
-                              <div class="msg-text" style="font-weight: bold;">
-                                {{data.content}}
-                              </div>
-                              <div class="msg-info">
-                                <div class="msg-info-time">{{data.timestamp}}</div>
-                              </div>
-                            </div>
+                          <div class="msg-info">
+                            <div class="msg-info-time">{{data.timestamp}}</div>
                           </div>
-                        </main>
+                        </div>
+                      </div>
+                      <!-- right  -->
+                      <div class="msg right-msg" *ngIf="data.author != data.friend">
+                        <div
+                         class="msg-img"
+                         style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+                        ></div>
+                  
+                        <div class="msg-bubble">
+                          <div class="msg-text" style="font-weight: bold;">
+                            {{data.content}}
+                          </div>
+                          <div class="msg-info">
+                            <div class="msg-info-time">{{data.timestamp}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </main>
                 </div>
                 <div class="chat-input" style="height: 73px !important;">
                     <i class="far fa-smile lg text-secondary pl-4 pr-3"></i>

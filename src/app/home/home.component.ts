@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit{
   // calling all chats when logged in 
   constructor(private http:HttpClient,private toastr: ToastrService,private loginComponent:LoginComponent,private router: Router) {
       this.chats = {}
-      this.http.get('http://127.0.0.1:8000/users/').subscribe(
+      this.http.get('http://65.2.126.93/users/').subscribe(
       (result) => {
       this.chats = result
       // calling chatlist function 
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit{
     console.log("contacts",this.contacts)
   }
   openChat(username,chatid,friend){
-    this.http.post('http://127.0.0.1:8000/findchat/',{"user":username,"friend":friend}).subscribe(
+    this.http.post('http://65.2.126.93/findchat/',{"user":username,"friend":friend}).subscribe(
       (result) => {
         this.setsock(result[0].id)
     })
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit{
   }
 
   setsock(url) {
-    this.socket = new WebSocket("ws://127.0.0.1:8000/ws/chat/"+url+"/");
+    this.socket = new WebSocket("ws://65.2.126.93/ws/chat/"+url+"/");
     this.socket.onopen = () => {
       console.log('WebSockets connection created.');
     };

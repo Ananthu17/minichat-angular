@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   attendance = {}
   
   onSubmit(data){
-    this.http.post('http://127.0.0.1:8000/api-token-auth/',data)
+    this.http.post('http://65.2.126.93/api-token-auth/',data)
     .subscribe((result)=>{
       this.user=data.username
       console.log("username:",this.user)
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     )
   }
   onSignup(data){
-    this.http.post('http://127.0.0.1:8000/signup',data)
+    this.http.post('http://65.2.126.93/signup',data)
     .subscribe((result)=>{
       this.toastr.success("Account created successfully");
       $('#card').removeClass('d-none')
